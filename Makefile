@@ -8,14 +8,14 @@ CFLAGS=-Wall -Wextra -Wshadow -Wpedantic -std=c99 -O0 -g
 TARGETS=kNN
 
 #define object-files
-OBJ=kNN.o
+OBJ=kNN.o kd_tree.o
 
 build: $(TARGETS)
 
-kNN: kNN.o
+kNN: $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
-%.o: %.c
+%.o: %.c %.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
